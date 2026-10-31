@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include('../partials/navbar') %>
+    <h1>Create new Listing</h1>
+
+    <form action="/listings" method="post">
+      <label for="streetAddress">Street Address:</label>
+      <input name="streetAddress" id="streetAddress" type="text" />
+
+      <label for="city">City:</label>
+      <input name="city" id="city" type="text" />
+
+      <label for="price">Price:</label>
+      <input name="price" id="price" type="number" />
+
+      <label for="size">Size:</label>
+      <input name="size" id="size" type="number" />
+
+      <label for="category">Category:</label>
+      <select name="category" id="category">
+        <% for(let oneCategory of categories){ %>
+            <option value="<%= oneCategory._id %>"><%= oneCategory.categoryName %></option>
+        <% } %>
+      </select>
+
+      <button>Create Listing</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include('../partials/navbar') %>
+    <h1>All Listings</h1>
+
+    <% if(listings.length === 0) { %>
+        <p>No Listings yet.</p>
+    <% } %>
+
+    <% for(let oneListing of listings){ %>
+        <p>Street Address: <%= oneListing.streetAddress %></p>
+        <p>City: <%= oneListing.city %></p>
+        <p>Price: <%= oneListing.price %></p>
+        <p>Size: <%= oneListing.size %></p>
+        <% if(oneListing.category){ %>
+            <p>Category: <%= oneListing.category.categoryName %></p>
+        <% } %>
+
+        <a href="/listings/<%= oneListing._id %>/edit">Edit Listing</a>
+
+        <form action="/listings/<%= oneListing._id %>?_method=DELETE" method="post">
+            <button>Delete Listing</button>
+        </form>
+    <% } %>
+  </body>
+</html>
